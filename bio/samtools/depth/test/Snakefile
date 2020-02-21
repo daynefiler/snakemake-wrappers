@@ -1,0 +1,12 @@
+rule samtools_depth:
+    input:
+        bams = ["mapped/A.bam", "mapped/B.bam"],
+	bed = "regionToCalcDepth.bed" # optional
+    output:
+        "depth.txt"
+    params:
+        "" # optional additional parameters as string
+    threads:  # Samtools takes additional threads through its option -@
+        8     # This value - 1 will be sent to -@
+    wrapper:
+        "master/bio/samtools/depth"
