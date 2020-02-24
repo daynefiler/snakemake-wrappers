@@ -19,5 +19,3 @@ shell(
     "samtools depth {threads} {snakemake.params} {bed} "
     "-o {snakemake.output[0]} {snakemake.input.bams}"
 )
-
-
