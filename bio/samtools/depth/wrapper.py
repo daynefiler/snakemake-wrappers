@@ -13,11 +13,11 @@ from snakemake.shell import shell
 threads = "" if snakemake.threads <= 1 else " -@ {} ".format(snakemake.threads - 1)
 
 # check for optional bed file
-bed = "" if snakemake.bed == "" else "-b {}".format(snakemake.bed)
+bed = "" if snakemake.bed == "" else "-b {}".format(snakemake.input.bed)
 
 shell(
     "samtools depth {threads} {snakemake.params} {bed} "
-    "-o {snakemake.output[0]} {snakemake.input}"
+    "-o {snakemake.output[0]} {snakemake.input.bams}"
 )
 
 
