@@ -8,7 +8,7 @@ __license__ = "MIT"
 from snakemake.shell import shell
 
 # check for optional bed file
-bed = "" if snakemake.bed == "" else "-b {}".format(snakemake.input.bed)
+bed = "" if snakemake.input.bed == "" else "-b {}".format(snakemake.input.bed)
 
 shell(
     "samtools depth {snakemake.params} {bed} "
